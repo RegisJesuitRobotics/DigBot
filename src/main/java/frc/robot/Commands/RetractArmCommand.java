@@ -8,11 +8,11 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Joysticks.PlaystationController;
 import frc.robot.Subsystem.RobotArm;
 
-public class ExtendArmCommand extends CommandBase {
+public class RetractArmCommand extends CommandBase {
   private final RobotArm robotArm;
   private final PlaystationController controller;
-  private final double EXTEND_SPEED = 0.5;
-  public ExtendArmCommand(RobotArm robotArm, PlaystationController controller) {
+  private final double EXTEND_SPEED = -0.5;
+  public RetractArmCommand(RobotArm robotArm, PlaystationController controller) {
     this.robotArm = robotArm;
     this.controller = controller;
   }
@@ -24,7 +24,7 @@ public class ExtendArmCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      robotArm.extendArm(EXTEND_SPEED);
+    robotArm.extendArm(EXTEND_SPEED);
   }
 
   // Called once the command ends or is interrupted.
