@@ -4,6 +4,9 @@
 
 package frc.robot.Subsystem;
 
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel;
+
 import edu.wpi.first.wpilibj.simulation.PWMSim;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -11,8 +14,8 @@ import frc.robot.Constants;
 public class RobotArm extends SubsystemBase {
   private final int EXTEND_ARM_PORT = Constants.ArmConstants.EXTEND_ARM_PORT;
   private final int TILT_BUCKET_PORT = Constants.ArmConstants.TILT_BUCKET_PORT;
-  private final PWMSim extendArm = new PWMSim(EXTEND_ARM_PORT);
-  private final PWMSim tiltArm = new PWMSim(TILT_BUCKET_PORT);
+  private final CANSparkMax extendArm = new CANSparkMax(EXTEND_ARM_PORT, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private final CANSparkMax tiltArm = new CANSparkMax(TILT_BUCKET_PORT, CANSparkMaxLowLevel.MotorType.kBrushless);
   public RobotArm() {
 
 
@@ -24,9 +27,9 @@ public class RobotArm extends SubsystemBase {
   }
 
   public void extendArm(double extendSpeed){
-      extendArm.setSpeed(extendSpeed);
+      extendArm.set(extendSpeed);
   }
   public void tiltBucket(double tiltSpeed){
-    tiltArm.setSpeed(tiltSpeed);
+    tiltArm.set(tiltSpeed);
   }
 }

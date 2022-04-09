@@ -20,10 +20,10 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
 
-  /**
-   * This function is run when the robot is first started up and should be used for any
-   * initialization code.
-   */
+ @Override
+ public void robotPeriodic(){
+  CommandScheduler.getInstance().run();
+ }
   @Override
   public void robotInit() {
     // We need to invert one side of the drivetrain so that positive voltages
@@ -40,7 +40,6 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during autonomous. */
   @Override
   public void autonomousPeriodic() {
-    CommandScheduler.getInstance().run();
   
     }
   

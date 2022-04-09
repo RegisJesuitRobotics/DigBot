@@ -6,16 +6,34 @@ package frc.robot.Commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Joysticks.PlaystationController;
+import frc.robot.Joysticks.XBoxController;
 import frc.robot.Subsystem.RobotArm;
 
 public class TiltBucketDownCommand extends CommandBase {
   private final RobotArm robotArm;
   private final PlaystationController controller;
   private final double EXTEND_SPEED = -0.5;  
-  public TiltBucketDownCommand(PlaystationController controller, RobotArm robotArm) {
-    this.robotArm = robotArm;
-    this.controller = controller;
+  private final XBoxController xBoxController;
+  TiltBucketDownCommand(){
+    robotArm = null;
+    controller = null;
+    xBoxController = null;
   }
+  public TiltBucketDownCommand(PlaystationController playstationController, RobotArm robotArm) {
+    this.robotArm = robotArm;
+    this.controller = playstationController;
+    xBoxController = null;
+  }
+
+  public TiltBucketDownCommand(XBoxController xBoxController, RobotArm robotArm){
+    this.xBoxController = xBoxController;
+    this.robotArm = robotArm;
+    controller = null;
+  }
+
+  
+
+  
 
   // Called when the command is initially scheduled.
   @Override
