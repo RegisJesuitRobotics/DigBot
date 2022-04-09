@@ -18,17 +18,23 @@ public class ExtendArmCommand extends CommandBase {
     robotArm = null;
     controller = null;
     xBoxController = null;
+
+    addRequirements(robotArm);
   }
   public ExtendArmCommand(PlaystationController playstationController, RobotArm robotArm) {
     this.robotArm = robotArm;
     this.controller = playstationController;
     xBoxController = null;
+
+    addRequirements(robotArm);
   }
 
   public ExtendArmCommand(XBoxController xBoxController, RobotArm robotArm){
     this.xBoxController = xBoxController;
     this.robotArm = robotArm;
     controller = null;
+
+    addRequirements(robotArm);
   }
 
   // Called when the command is initially scheduled.

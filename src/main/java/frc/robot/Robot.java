@@ -20,10 +20,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
   private RobotContainer robotContainer;
 
- @Override
- public void robotPeriodic(){
-  CommandScheduler.getInstance().run();
- }
+
   @Override
   public void robotInit() {
     // We need to invert one side of the drivetrain so that positive voltages
@@ -31,7 +28,10 @@ public class Robot extends TimedRobot {
     // gearbox is constructed, you might have to invert the left side instead.
     robotContainer = new RobotContainer();
   }
-
+  @Override
+  public void robotPeriodic(){
+   CommandScheduler.getInstance().run();
+  }
   /** This function is run once each time the robot enters autonomous mode. */
   @Override
   public void autonomousInit() {
@@ -42,7 +42,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
   
     }
-  
+   
 
   /** This function is called once each time the robot enters teleoperated mode. */
   @Override
@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during teleoperated mode. */
   @Override
   public void teleopPeriodic() {
-    
+    CommandScheduler.getInstance().run();
   }
 
   /** This function is called once each time the robot enters test mode. */

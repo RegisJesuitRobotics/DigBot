@@ -34,7 +34,7 @@ public class RobotContainer {
             xboxController.x.whenHeld(new RetractArmCommand(xboxController, robotArm));
             xboxController.y.whenHeld(new TiltBucketUpCommand(xboxController, robotArm));
             xboxController.a.whenHeld(new TiltBucketDownCommand(xboxController, robotArm));
-            xboxController.b.whenHeld(new ExtendArmCommand(xboxController, robotArm));
+            xboxController.b.whileHeld(new ExtendArmCommand(xboxController, robotArm));
     }       
 
 

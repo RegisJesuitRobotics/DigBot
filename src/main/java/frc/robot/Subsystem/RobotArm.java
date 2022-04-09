@@ -6,6 +6,8 @@ package frc.robot.Subsystem;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel;
+import com.revrobotics.CANSparkMax.IdleMode;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.simulation.PWMSim;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -14,10 +16,18 @@ import frc.robot.Constants;
 public class RobotArm extends SubsystemBase {
   private final int EXTEND_ARM_PORT = Constants.ArmConstants.EXTEND_ARM_PORT;
   private final int TILT_BUCKET_PORT = Constants.ArmConstants.TILT_BUCKET_PORT;
-  private final CANSparkMax extendArm = new CANSparkMax(EXTEND_ARM_PORT, CANSparkMaxLowLevel.MotorType.kBrushless);
-  private final CANSparkMax tiltArm = new CANSparkMax(TILT_BUCKET_PORT, CANSparkMaxLowLevel.MotorType.kBrushless);
+  private final CANSparkMax extendArm = new CANSparkMax(EXTEND_ARM_PORT, MotorType.kBrushless);
+  private final CANSparkMax tiltArm = new CANSparkMax(TILT_BUCKET_PORT, MotorType.kBrushless);
   public RobotArm() {
+extendArm.restoreFactoryDefaults();
+extendArm.setInverted(false);
+extendArm.setIdleMode(IdleMode.kBrake);
+extendArm.burnFlash();
 
+tiltArm.restoreFactoryDefaults();
+tiltArm.setInverted(false);
+tiltArm.setIdleMode(IdleMode.kBrake);
+tiltArm.burnFlash();
 
   }
 
