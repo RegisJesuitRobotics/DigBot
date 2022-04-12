@@ -16,18 +16,19 @@ import frc.robot.Constants;
 public class RobotArm extends SubsystemBase {
   private final int EXTEND_ARM_PORT = Constants.ArmConstants.EXTEND_ARM_PORT;
   private final int TILT_BUCKET_PORT = Constants.ArmConstants.TILT_BUCKET_PORT;
-  private final CANSparkMax extendArm = new CANSparkMax(EXTEND_ARM_PORT, MotorType.kBrushless);
-  private final CANSparkMax tiltArm = new CANSparkMax(TILT_BUCKET_PORT, MotorType.kBrushless);
+  private final PWMSim extendArm = new PWMSim(EXTEND_ARM_PORT);
+  private final PWMSim tiltArm = new PWMSim(TILT_BUCKET_PORT);
   public RobotArm() {
-extendArm.restoreFactoryDefaults();
-extendArm.setInverted(false);
-extendArm.setIdleMode(IdleMode.kBrake);
-extendArm.burnFlash();
+// for SparkMaxes
+// extendArm.restoreFactoryDefaults();
+// extendArm.setInverted(false);
+// extendArm.setIdleMode(IdleMode.kBrake);
+// extendArm.burnFlash();
 
-tiltArm.restoreFactoryDefaults();
-tiltArm.setInverted(false);
-tiltArm.setIdleMode(IdleMode.kBrake);
-tiltArm.burnFlash();
+// tiltArm.restoreFactoryDefaults();
+// tiltArm.setInverted(false);
+// tiltArm.setIdleMode(IdleMode.kBrake);
+// tiltArm.burnFlash();
 
   }
 
@@ -37,9 +38,9 @@ tiltArm.burnFlash();
   }
 
   public void extendArm(double extendSpeed){
-      extendArm.set(extendSpeed);
+      extendArm.setSpeed(extendSpeed);
   }
   public void tiltBucket(double tiltSpeed){
-    tiltArm.set(tiltSpeed);
+    tiltArm.setSpeed(tiltSpeed);
   }
 }

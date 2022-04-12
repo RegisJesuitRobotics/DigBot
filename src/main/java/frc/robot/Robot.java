@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
   /** This function is called periodically during teleoperated mode. */
   @Override
   public void teleopPeriodic() {
-    CommandScheduler.getInstance().run();
+    
   }
 
   /** This function is called once each time the robot enters test mode. */
