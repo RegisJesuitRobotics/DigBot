@@ -10,52 +10,54 @@ import frc.robot.Joysticks.XBoxController;
 import frc.robot.Subsystem.RobotArm;
 
 public class RetractArmCommand extends CommandBase {
-  private final RobotArm robotArm;
-  private final PlaystationController controller;
-  private final double EXTEND_SPEED = -0.5;
-  private final XBoxController xBoxController;
-  RetractArmCommand(){
-    robotArm = null;
-    controller = null;
-    xBoxController = null;
+    private final RobotArm robotArm;
+    private final PlaystationController controller;
+    private final double EXTEND_SPEED = -0.5;
+    private final XBoxController xBoxController;
 
-    addRequirements(robotArm);
-  }
-  public RetractArmCommand(PlaystationController playstationController, RobotArm robotArm) {
-    this.robotArm = robotArm;
-    this.controller = playstationController;
-    xBoxController = null;
+    RetractArmCommand() {
+        robotArm = null;
+        controller = null;
+        xBoxController = null;
 
-    addRequirements(robotArm);
-  }
+        addRequirements(robotArm);
+    }
 
-  public RetractArmCommand(XBoxController xBoxController, RobotArm robotArm){
-    this.xBoxController = xBoxController;
-    this.robotArm = robotArm;
-    controller = null;
+    public RetractArmCommand(PlaystationController playstationController, RobotArm robotArm) {
+        this.robotArm = robotArm;
+        this.controller = playstationController;
+        xBoxController = null;
 
-    addRequirements(robotArm);
-  }
+        addRequirements(robotArm);
+    }
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    public RetractArmCommand(XBoxController xBoxController, RobotArm robotArm) {
+        this.xBoxController = xBoxController;
+        this.robotArm = robotArm;
+        controller = null;
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-    robotArm.extendArm(EXTEND_SPEED);
-  }
+        addRequirements(robotArm);
+    }
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    robotArm.extendArm(0.0);
-  }
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {}
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        robotArm.extendArm(EXTEND_SPEED);
+    }
+
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+        robotArm.extendArm(0.0);
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }

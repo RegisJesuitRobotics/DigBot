@@ -1,7 +1,7 @@
 package frc.robot.Utils;
 
 public class MathUtils {
-    
+
 
 
     private MathUtils() {}
@@ -13,5 +13,3 @@ public class MathUtils {
         return 0;
     }
 }
-    
-

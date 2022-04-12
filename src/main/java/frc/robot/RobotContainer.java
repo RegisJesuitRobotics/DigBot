@@ -5,7 +5,6 @@
 package frc.robot;
 
 import frc.robot.Joysticks.XBoxController;
-import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Commands.ExtendArmCommand;
 import frc.robot.Commands.RetractArmCommand;
 import frc.robot.Commands.TiltBucketDownCommand;
@@ -19,23 +18,23 @@ public class RobotContainer {
     private final RobotArm robotArm = new RobotArm();
     private final PlaystationController playstationController = new PlaystationController(0);
     private final XBoxController xboxController = new XBoxController(1);
-    
 
-    public RobotContainer(){
+
+    public RobotContainer() {
         mapButtons();
     }
 
-    private void mapButtons(){
-            playstationController.circle.whenHeld(new ExtendArmCommand(playstationController, robotArm));
-            playstationController.square.whenHeld(new RetractArmCommand(playstationController, robotArm));
-            playstationController.triangle.whenHeld(new TiltBucketUpCommand(playstationController, robotArm));
-            playstationController.x.whenHeld(new TiltBucketDownCommand(playstationController, robotArm));
+    private void mapButtons() {
+        playstationController.circle.whenHeld(new ExtendArmCommand(playstationController, robotArm));
+        playstationController.square.whenHeld(new RetractArmCommand(playstationController, robotArm));
+        playstationController.triangle.whenHeld(new TiltBucketUpCommand(playstationController, robotArm));
+        playstationController.x.whenHeld(new TiltBucketDownCommand(playstationController, robotArm));
 
-            xboxController.x.whenHeld(new RetractArmCommand(xboxController, robotArm));
-            xboxController.y.whenHeld(new TiltBucketUpCommand(xboxController, robotArm));
-            xboxController.a.whenHeld(new TiltBucketDownCommand(xboxController, robotArm));
-            xboxController.b.whileHeld(new ExtendArmCommand(xboxController, robotArm));
-    }       
+        xboxController.x.whenHeld(new RetractArmCommand(xboxController, robotArm));
+        xboxController.y.whenHeld(new TiltBucketUpCommand(xboxController, robotArm));
+        xboxController.a.whenHeld(new TiltBucketDownCommand(xboxController, robotArm));
+        xboxController.b.whileHeld(new ExtendArmCommand(xboxController, robotArm));
+    }
 
 
 }
