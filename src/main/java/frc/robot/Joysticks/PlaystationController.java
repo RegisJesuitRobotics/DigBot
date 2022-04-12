@@ -4,15 +4,13 @@
 
 package frc.robot.Joysticks;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import edu.wpi.first.wpilibj.PS4Controller;
 import edu.wpi.first.wpilibj.PS4Controller.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
-public class PlaystationController extends GenericController{
-  /** Creates a new PlaystationController. */
- 
+public class PlaystationController extends GenericController {
+    /** Creates a new PlaystationController. */
+
     public final JoystickButton square = new JoystickButton(this, Button.kSquare.value);
     public final JoystickButton x = new JoystickButton(this, Button.kCross.value);
     public final JoystickButton circle = new JoystickButton(this, Button.kCircle.value);
@@ -35,9 +33,9 @@ public class PlaystationController extends GenericController{
 
     public final DPad dPad = new DPad(this);
 
-  
 
-  public PlaystationController(int port){
-    super(port);
-  }
+
+    public PlaystationController(int port) {
+        super(port);
+    }
 }
