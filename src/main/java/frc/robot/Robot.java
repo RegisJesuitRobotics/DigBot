@@ -17,7 +17,6 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 public class Robot extends TimedRobot {
     private RobotContainer robotContainer;
 
-
     @Override
     public void robotInit() {
         // We need to invert one side of the drivetrain so that positive voltages

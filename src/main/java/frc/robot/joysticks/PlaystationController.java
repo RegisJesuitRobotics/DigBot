@@ -2,15 +2,13 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.Joysticks;
+package frc.robot.joysticks;
 
 import edu.wpi.first.wpilibj.PS4Controller.*;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 
 public class PlaystationController extends GenericController {
-    /** Creates a new PlaystationController. */
-
     public final JoystickButton square = new JoystickButton(this, Button.kSquare.value);
     public final JoystickButton x = new JoystickButton(this, Button.kCross.value);
     public final JoystickButton circle = new JoystickButton(this, Button.kCircle.value);
@@ -32,8 +30,6 @@ public class PlaystationController extends GenericController {
     public final JoystickButton touchpad = new JoystickButton(this, Button.kTouchpad.value);
 
     public final DPad dPad = new DPad(this);
-
-
 
     public PlaystationController(int port) {
         super(port);
