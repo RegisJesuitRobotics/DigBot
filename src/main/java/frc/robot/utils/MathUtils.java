@@ -1,9 +1,6 @@
-package frc.robot.Utils;
+package frc.robot.utils;
 
 public class MathUtils {
-
-
-
     private MathUtils() {}
 
     public static double deadZone(double value, double deadZone) {
