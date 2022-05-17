@@ -28,11 +28,11 @@ public class DriveTrain extends SubsystemBase {
     @Override
     public void periodic() {
         // This method will be called once per scheduler run
-        
+
     }
 
     public void curvatureDrive(double xSpeed, double zRotation) {
-      drive.curvatureDrive(xSpeed, zRotation, false);
+        drive.curvatureDrive(xSpeed, zRotation, false);
     }
 
 

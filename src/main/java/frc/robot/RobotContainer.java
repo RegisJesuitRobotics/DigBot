@@ -32,9 +32,10 @@ public class RobotContainer {
         playstationController.square.whenHeld(new RetractArmCommand(playstationController, robotArm));
         playstationController.triangle.whenHeld(new TiltBucketUpCommand(playstationController, robotArm));
         playstationController.x.whenHeld(new TiltBucketDownCommand(playstationController, robotArm));
-        
-        driveTrain.setDefaultCommand(new CurvatureDrive(() ->  playstationController.rightTrigger.getAxis() - playstationController.leftTrigger.getAxis(), 
-        () -> playstationController.leftThumb.getXAxis()));
+
+        driveTrain.setDefaultCommand(new CurvatureDrive(
+                () -> playstationController.rightTrigger.getAxis() - playstationController.leftTrigger.getAxis(),
+                () -> playstationController.leftThumb.getXAxis()));
 
         xboxController.x.whenHeld(new RetractArmCommand(xboxController, robotArm));
         xboxController.y.whenHeld(new TiltBucketUpCommand(xboxController, robotArm));

@@ -10,36 +10,37 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Subsystem.DriveTrain;
 
 public class CurvatureDrive extends CommandBase {
-  /** Creates a new CurvatureDrive. */
-  private final DriveTrain driveTrain = new DriveTrain();
+    /** Creates a new CurvatureDrive. */
+    private final DriveTrain driveTrain = new DriveTrain();
 
-  private DoubleSupplier xSpeed;
-  private DoubleSupplier zRotation;
-  public CurvatureDrive(DoubleSupplier xSpeed, DoubleSupplier zRotation) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    this.xSpeed = xSpeed;
-    this.zRotation = zRotation;
-  }
+    private DoubleSupplier xSpeed;
+    private DoubleSupplier zRotation;
 
-  // Called when the command is initially scheduled.
-  @Override
-  public void initialize() {}
+    public CurvatureDrive(DoubleSupplier xSpeed, DoubleSupplier zRotation) {
+        // Use addRequirements() here to declare subsystem dependencies.
+        this.xSpeed = xSpeed;
+        this.zRotation = zRotation;
+    }
 
-  // Called every time the scheduler runs while the command is scheduled.
-  @Override
-  public void execute() {
-driveTrain.curvatureDrive(xSpeed.getAsDouble(), zRotation.getAsDouble());
-  }
+    // Called when the command is initially scheduled.
+    @Override
+    public void initialize() {}
 
-  // Called once the command ends or is interrupted.
-  @Override
-  public void end(boolean interrupted) {
-    driveTrain.curvatureDrive(0, 0);
-  }
+    // Called every time the scheduler runs while the command is scheduled.
+    @Override
+    public void execute() {
+        driveTrain.curvatureDrive(xSpeed.getAsDouble(), zRotation.getAsDouble());
+    }
 
-  // Returns true when the command should end.
-  @Override
-  public boolean isFinished() {
-    return false;
-  }
+    // Called once the command ends or is interrupted.
+    @Override
+    public void end(boolean interrupted) {
+        driveTrain.curvatureDrive(0, 0);
+    }
+
+    // Returns true when the command should end.
+    @Override
+    public boolean isFinished() {
+        return false;
+    }
 }
