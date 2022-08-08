@@ -5,12 +5,10 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.joysticks.PlaystationController;
-import frc.robot.joysticks.XBoxController;
 import frc.robot.subsystem.RobotArm;
 
 public class TiltBucketDownCommand extends CommandBase {
-    private final double TILT_SPEED = -0.5;
+    private final double TILT_SPEED = -0.3;
     private final RobotArm robotArm;
 
 

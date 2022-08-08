@@ -1,44 +1,60 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
-
 package frc.robot.subsystem;
 
-
-import edu.wpi.first.wpilibj.simulation.PWMSim;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class RobotArm extends SubsystemBase {
+    private enum Direction {
+        NONE,
+        FORWARD,
+        BACKWARD
+    }
     private final int EXTEND_ARM_PORT = Constants.ArmConstants.EXTEND_ARM_PORT;
     private final int TILT_BUCKET_PORT = Constants.ArmConstants.TILT_BUCKET_PORT;
-    private final PWMSim extendArm = new PWMSim(EXTEND_ARM_PORT);
-    private final PWMSim tiltArm = new PWMSim(TILT_BUCKET_PORT);
+    private final CANSparkMax extendArm = new CANSparkMax(EXTEND_ARM_PORT, MotorType.kBrushed);
+    private final CANSparkMax tiltArm = new CANSparkMax(TILT_BUCKET_PORT, MotorType.kBrushed);
+
+    private double tiltSpeed = 0.0;
+    private Direction blockedDirection = Direction.NONE;
 
     public RobotArm() {
-// for SparkMaxes
-// extendArm.restoreFactoryDefaults();
-// extendArm.setInverted(false);
-// extendArm.setIdleMode(IdleMode.kBrake);
-// extendArm.burnFlash();
-
-// tiltArm.restoreFactoryDefaults();
-// tiltArm.setInverted(false);
-// tiltArm.setIdleMode(IdleMode.kBrake);
-// tiltArm.burnFlash();
 
     }
 
     @Override
     public void periodic() {
-        // This method will be called once per scheduler run
+        if (blockedDirection != Direction.NONE) {
+            if (blockedDirection == Direction.FORWARD)
+                if (tiltSpeed > 0) {
+                    tiltSpeed = 0;
+                } else if (tiltSpeed < 0) {
+                    blockedDirection = Direction.NONE;
+                }
+            if (blockedDirection == Direction.BACKWARD)
+                if (tiltSpeed < 0) {
+                    tiltSpeed = 0;
+                } else if (tiltSpeed > 0) {
+                    blockedDirection = Direction.NONE;
+                }
+        }
+        if (tiltArm.getOutputCurrent() >= 19) {
+            if (tiltSpeed > 0) {
+                blockedDirection = Direction.FORWARD;
+            } else if (tiltSpeed < 0) {
+                blockedDirection = Direction.BACKWARD;
+            }
+        }
+
+        tiltArm.set(tiltSpeed);
     }
 
     public void extendArm(double extendSpeed) {
-        extendArm.setSpeed(extendSpeed);
+        extendArm.set(extendSpeed);
     }
 
     public void tiltBucket(double tiltSpeed) {
-        tiltArm.setSpeed(tiltSpeed);
+        this.tiltSpeed = tiltSpeed;
     }
 }
