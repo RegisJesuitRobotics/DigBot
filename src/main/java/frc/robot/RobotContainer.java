@@ -4,7 +4,6 @@
 
 package frc.robot;
 
-import frc.robot.joysticks.XBoxController;
 import frc.robot.commands.ExtendArmCommand;
 import frc.robot.commands.RetractArmCommand;
 import frc.robot.commands.TiltBucketDownCommand;
@@ -31,10 +30,10 @@ public class RobotContainer {
                 () -> playstationController.rightTrigger.getAxis() - playstationController.leftTrigger.getAxis(),
                 playstationController.leftThumb::getXAxis, driveTrain));
 
-        playstationController.circle.whenHeld(new ExtendArmCommand(robotArm));
-        playstationController.square.whenHeld(new RetractArmCommand(robotArm));
-        playstationController.triangle.whenHeld(new TiltBucketUpCommand(robotArm));
-        playstationController.x.whenHeld(new TiltBucketDownCommand(robotArm));
+        playstationController.triangle.whenHeld(new ExtendArmCommand(robotArm));
+        playstationController.x.whenHeld(new RetractArmCommand(robotArm));
+        playstationController.square.whenHeld(new TiltBucketUpCommand(robotArm));
+        playstationController.circle.whenHeld(new TiltBucketDownCommand(robotArm));
 
 //        xboxController.x.whenHeld(new RetractArmCommand(robotArm));
 //        xboxController.y.whenHeld(new TiltBucketUpCommand(robotArm));
